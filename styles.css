@@ -9,10 +9,12 @@
 
 .bar
 {
+  text-align: center;
   display: inline-block;
 }
 
-.wrapper {
+.wrapper
+{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
