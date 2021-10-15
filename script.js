@@ -3,10 +3,12 @@ jQuery(function() {
     //create a div inside element to serve as a wrapper
     element.append('<div class="wrapper"></div>');
     //draw a grid
-    drawGrid(data);
+    drawGrid(data, element);
+    //fill in the bars with colour
+    colorGrid(data, element);
   }
 
-  function drawGrid(data) {
+  function drawGrid(data, element) {
     //find the max value in dataset and set it as height
     let height = Math.max(...data);
     //set the width as length of dataset
@@ -31,8 +33,20 @@ jQuery(function() {
     $('.bar').css('height', elmHeight);
   }
 
+  //color the bars
+  function colorGrid(data, element) {
+    for (let i = 0; i < data.length; i++) {
+      for (let j = 1; j <= data[i]; j++) { //height of each bar
+        //color the appropraite divs
+        let str = `div.b${i + 1}-${j}`;
+        console.log(str);
+        $(str).css('background-color', 'red');
+      }
+    }
+  }
+
   //testing
-  let data = [1, 2, 13, 4, 5, 6];
+  let data = [1, 2, 3, 4, 5];
   let options = {};
   let element = $('.img');
   drawBarChart(data, options, element);
