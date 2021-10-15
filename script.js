@@ -5,7 +5,7 @@ jQuery(function() {
     //draw a grid
     drawGrid(data, element);
     //fill in the bars with colour
-    colorGrid(data, element);
+    colorGrid(data, options);
   }
 
   function drawGrid(data, element) {
@@ -34,20 +34,28 @@ jQuery(function() {
   }
 
   //color the bars
-  function colorGrid(data, element) {
+  function colorGrid(data, options) {
+    //if options does not have a color field, use black as default
+    let color = '';
+    if (options.hasOwnProperty('color')) {
+      color = options.color;
+    } else {
+      color = 'black';
+    }
+
     for (let i = 0; i < data.length; i++) {
       for (let j = 1; j <= data[i]; j++) { //height of each bar
         //color the appropraite divs
         let str = `div.b${i + 1}-${j}`;
         console.log(str);
-        $(str).css('background-color', 'red');
+        $(str).css('background-color', (typeof(color) === 'string') ? color : color[i]);
       }
     }
   }
 
   //testing
   let data = [1, 2, 3, 4, 5];
-  let options = {};
+  let options = {color: ['red', 'blue', 'orange', 'purple', 'green']};
   let element = $('.img');
   drawBarChart(data, options, element);
 })

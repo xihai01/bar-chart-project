@@ -1,5 +1,6 @@
 .img
 {
+  display: flex;
   width: 1000px;
   height: 500px;
   padding: 4%;
@@ -12,5 +13,9 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
   background-color: ghostwhite;
 }
