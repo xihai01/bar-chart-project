@@ -15,11 +15,15 @@ jQuery(function() {
     const elmWidth = parseInt(element.css('width')) / width;
     const elmHeight = parseInt(element.css('height')) / height;
 
+    let yCoords = height;
     //draw grid
     for (let i = 1; i <= height; i++) {
       for (let j = 1; j <= width; j++) {
-        $('.wrapper').append('<div class="bar"></div>');
+        //assign a unique class for each bar in grid with coordinates
+        let str = `<div class="bar b${j}-${yCoords}"></div>`;
+        $('.wrapper').append(str);
       }
+      yCoords--;
     }
 
     //set width and height of individual grids
@@ -28,7 +32,7 @@ jQuery(function() {
   }
 
   //testing
-  let data = [1, 2, 3, 4, 5];
+  let data = [1, 2, 13, 4, 5, 6];
   let options = {};
   let element = $('.img');
   drawBarChart(data, options, element);
