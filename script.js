@@ -1,11 +1,14 @@
 jQuery(function() {
   const drawBarChart = function(data, options, element) {
-    //create a div inside element to serve as a wrapper
-    element.append('<div class="wrapper"></div>');
+    //create a div inside element to hold together bar chart and y-axis
+    element.append('<div class="box"></div>')
+    //create a div inside box to serve as a wrapper for grid bars
+    $('.box').append('<div class="wrapper"></div>');
     //draw a grid
     drawGrid(data, element);
     //fill in the bars with colour
     colorGrid(data, options);
+    labelTitleAndAxes(data, element);
   }
 
   function drawGrid(data, element) {
@@ -16,6 +19,7 @@ jQuery(function() {
     //get the width and height of the rendering element
     const elmWidth = parseInt(element.css('width')) / width;
     const elmHeight = parseInt(element.css('height')) / height;
+   // console.log(element.css('height'));
 
     let yCoords = height;
     //draw grid
@@ -74,6 +78,15 @@ jQuery(function() {
           break;
       }
     }
+  }
+
+  //label title and axes
+  function labelTitleAndAxes(data, element) {
+    $('.box').prepend('<div class="y-axis"><div>fdsfds</div><div>fdsfds</div><div>fdsfds</div></div>');
+    //append title to top of element
+    element.prepend('<div class="title">This is a bar chart</div>');
+    //append x-axis label to bottom
+    element.append('<div class="x-axis">green ge geg gege gege gee</div>');
   }
 
   //testing

@@ -1,9 +1,11 @@
 .img
 {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 1000px;
   height: 500px;
-  padding: 4%;
+  padding: 2%;
   background-color: #ffffe6;
 }
 
@@ -13,11 +15,31 @@
   display: inline-block;
 }
 
+.box {
+  display: flex;
+}
+
 .wrapper
 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  flex: 1 0 auto;
   width: 100%;
   background-color: ghostwhite;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+}
+
+.x-axis {
+  display: flex;
+  width: 100%;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
 }
