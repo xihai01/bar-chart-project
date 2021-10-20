@@ -11,6 +11,7 @@ jQuery(function() {
     //fill in the bars with colour
     colorGrid(data, options);
     labelTitleAndAxes();
+    setTitle(options);
     //re-adjust the width and height of bar chart
     let yLabelWidth = parseFloat($('.y-axis').css('width'));
     //const yLabelHeight = parseFloat($('.y-axis').css('height'));
@@ -98,12 +99,39 @@ jQuery(function() {
     $('.title-label').append('<div class="x-axis">green ge geg gege gege gee</div>');
   }
 
+  //set the name, font-size and color of the title
+  function setTitle(options) {
+    let name = '';
+    let fontSize = '';
+    let color = '';
+    //hide title by default
+    if (!(options.hasOwnProperty('title'))) {
+      $('.title').css('display', 'none');
+      return;
+    }
+    //16px and black by default if font-size and color not specified
+    if (typeof(options.title[1]) !== 'string') fontSize = '16px';
+    else fontSize = options.title[1];
+
+    if (typeof(options.title[2]) !== 'string') color = 'black';
+    else color = options.title[2];
+
+    //set the title of bar chart
+    name = options.title[0];
+    $('.title').text(name);
+    $('.title').css('font-size', fontSize);
+    $('.title').css('color', color);
+  }
+
   //testing
   let data = [1, 2, 3, 4, 5];
   let options = {color: ['red', 'blue', 'orange', 'purple', 'green'],
-    showData: [true, 'middle']};
+    showData: [true, 'middle'], title: ['Quarterly FInancial Budget Report', '30px', 'orange']};
   let element = $('.img');
   drawBarChart(data, options, element);
-})
-/**data => true/false (shows/hides data values)
+});
+/**showData => true/false (shows/hides data values)
 'up'/'middle'/'down' (positions data value on top/middle/bottom of bars)**/
+/**title => name, font-size and color. Default => no title
+ * font-size and color is optional. Default font-size and color
+ * is 16px and black respectively**/
