@@ -93,7 +93,7 @@ jQuery(function() {
 
   //label title and axes
   function labelTitleAndAxes() {
-    $('.box').prepend('<div class="y-axis"><div>fdsfds</div><div>fdsfds</div><div>fdsfds</div></div>');
+    $('.box').prepend('<div class="y-axis"></div>');
     //append title to top of element
     $('.title-label').prepend('<div class="title">This is a bar chart</div>');
     //append x-axis label to bottom
@@ -146,10 +146,12 @@ jQuery(function() {
   }
 
   //testing
-  let data = [1, 2, 3, 4, 5];
-  let options = {color: ['red', 'blue', 'orange', 'purple', 'green'],
+  let data = [1, 7, 5, 9, 15, 10, 22, 3];
+  let options = {color: ['red', 'blue', 'orange', 'purple', 'green',
+    'grey', 'aqua', 'brown'],
     showData: [true, 'middle'], title: ['Quarterly FInancial Budget Report', '30px', 'orange'],
-    xLabel: ['One', 'Two', 'Three', 'Four', 'Five']};
+    xLabel: ['One', 'Seven', 'Five', 'NIne', 'Fifteen', 'Ten',
+    'Twenty-Two', 'Three']};
   let element = $('.img');
   drawBarChart(data, options, element);
 });
