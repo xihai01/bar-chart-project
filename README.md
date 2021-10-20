@@ -17,9 +17,10 @@ Call the function *drawBarChart(data, options, element)*
 #### List of Available Options
 The structure of the *options* object is
 
- ```options = {color: [string1, string2, string3, ...],
+```options = {color: [string1, string2, string3, ...],
     showData: [true/false, string1], title: [string1, font-size(string value), color(string value)],
-    xLabel: [string1, string2, string3, ...]};```
+    xLabel: [string1, string2, string3, ...]}
+```
 
 The color property sets the colors for each bar. Color is optional and the default is black.
 
