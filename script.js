@@ -12,6 +12,7 @@ jQuery(function() {
     colorGrid(data, options);
     labelTitleAndAxes();
     setTitle(options);
+    setXLables(options);
     //re-adjust the width and height of bar chart
     let yLabelWidth = parseFloat($('.y-axis').css('width'));
     //const yLabelHeight = parseFloat($('.y-axis').css('height'));
@@ -96,7 +97,7 @@ jQuery(function() {
     //append title to top of element
     $('.title-label').prepend('<div class="title">This is a bar chart</div>');
     //append x-axis label to bottom
-    $('.title-label').append('<div class="x-axis">green ge geg gege gege gee</div>');
+    $('.title-label').append('<div class="x-axis"></div>');
   }
 
   //set the name, font-size and color of the title
@@ -123,10 +124,32 @@ jQuery(function() {
     $('.title').css('color', color);
   }
 
+  //set the x-axis labels
+  function setXLables(options) {
+    //hide x-axis labels by default if property doesn't exist
+    if (!(options.hasOwnProperty('xLabel'))) {
+      $('.x-axis').css('display', 'none');
+      return;
+    }
+    const width = data.length;
+    //create data.length div's to serve as labels for x-axis
+    let i = 0;
+    while (i < width) {
+      let div = '<div class="x-label"`>' + options.xLabel[i] + '</div>';
+      $('.x-axis').append(div);
+      i++;
+    }
+    //center labels
+    const elmWidth = parseFloat(element.css('width')) / width;
+    $('.x-label').css('width', `${elmWidth}`);
+    $('.x-label').css('text-align', 'center');
+  }
+
   //testing
   let data = [1, 2, 3, 4, 5];
   let options = {color: ['red', 'blue', 'orange', 'purple', 'green'],
-    showData: [true, 'middle'], title: ['Quarterly FInancial Budget Report', '30px', 'orange']};
+    showData: [true, 'middle'], title: ['Quarterly FInancial Budget Report', '30px', 'orange'],
+    xLabel: ['One', 'Two', 'Three', 'Four', 'Five']};
   let element = $('.img');
   drawBarChart(data, options, element);
 });
@@ -135,3 +158,4 @@ jQuery(function() {
 /**title => name, font-size and color. Default => no title
  * font-size and color is optional. Default font-size and color
  * is 16px and black respectively**/
+/**xLabel => default font-size and color is 30px and black**/
